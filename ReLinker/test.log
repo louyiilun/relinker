@@ -1,0 +1,21 @@
+nohup: ignoring input
+Dataloader contains 4 batches
+0:   0%|          | 0/2 [00:00<?, ?it/s]0:   0%|          | 0/2 [01:51<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/louyl/DiffLinker/sample.py", line 156, in <module>
+    chain, node_mask = model.sample_chain(data, sample_fn=sample_fn, keep_frames=1)
+  File "/home/louyl/DiffLinker/src/lightning.py", line 414, in sample_chain
+    linker_sizes = sample_fn(data)
+  File "/home/louyl/DiffLinker/sample.py", line 73, in sample_fn
+    output, _ = size_nn.forward(_data)
+  File "/home/louyl/DiffLinker/src/linker_size_lightning.py", line 103, in forward
+    output = self.gnn.forward(h, edges, distances, fragment_mask, distance_edge_mask)
+  File "/home/louyl/DiffLinker/src/linker_size.py", line 88, in forward
+    h, _ = gcl(h, edges, edge_attr=distances, node_mask=node_mask, edge_mask=edge_mask)
+  File "/home/louyl/anaconda3/envs/difflinker/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/louyl/DiffLinker/src/egnn.py", line 76, in forward
+    edge_feat, mij = self.edge_model(h[row], h[col], edge_attr, edge_mask)
+  File "/home/louyl/DiffLinker/src/egnn.py", line 49, in edge_model
+    out = torch.cat([source, target, edge_attr], dim=1)
+RuntimeError: CUDA out of memory. Tried to allocate 326.00 MiB (GPU 0; 23.70 GiB total capacity; 2.97 GiB already allocated; 221.69 MiB free; 3.06 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF

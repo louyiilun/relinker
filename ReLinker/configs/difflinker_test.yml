@@ -1,0 +1,40 @@
+exp_name: 'difflinker_test'
+# data: datasets
+train_data_prefix: template
+val_data_prefix: zinc_final_val
+# checkpoints: models
+logs: logs
+device: gpu
+log_iterations: null
+wandb_entity: null
+enable_progress_bar: True
+
+model: egnn_dynamics
+lr: 2.0e-4
+batch_size: 32
+n_layers: 8
+n_epochs: 913
+test_epochs: 20
+n_stability_samples: 10
+nf: 128
+activation: silu
+attention: False
+condition_time: True
+tanh: False
+norm_constant: 0.000001
+inv_sublayers: 2
+include_charges: False
+diffusion_loss_type: l2
+data_augmentation: False
+center_of_mass: fragments
+remove_anchors_context: True
+
+sin_embedding: False
+normalization_factor: 100
+normalize_factors: [1, 4, 10]
+aggregation_method: 'sum'
+normalization: batch_norm
+
+# resume: 
+# resume: difflinker_test_zincmodel_based
+# resume: difflinker_test_louyl_difflinker_test_bs32_date03-11_time12-26-07.274531
